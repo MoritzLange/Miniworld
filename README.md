@@ -3,7 +3,7 @@
 </p>
 
 ------------
-[This is a fork of the [original](https://github.com/Farama-Foundation/Miniworld)! This is only for my personal experiments with the Miniworld environments.]
+[*This is a fork of the [original](https://github.com/Farama-Foundation/Miniworld)! This is only for my personal experiments with the Miniworld environments.*]
 
 ------------
 
