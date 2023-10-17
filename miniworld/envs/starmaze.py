@@ -145,5 +145,5 @@ class StarMazeLeft(StarMaze):
 
 
 class StarMazeRight(StarMaze):
-    def __init__(self, goal_pos=[3.9, 0, 7.0], **kwargs):
+    def __init__(self, goal_pos=[5.5, 0, 2], **kwargs):
         super().__init__(goal_pos=goal_pos, **kwargs)
