@@ -14,6 +14,7 @@ from miniworld.envs.threerooms import ThreeRooms
 from miniworld.envs.tmaze import TMaze, TMazeLeft, TMazeRight
 from miniworld.envs.wallgap import WallGap
 from miniworld.envs.ymaze import YMaze, YMazeLeft, YMazeRight
+from miniworld.envs.starmaze import StarMaze, StarMazeLeft, StarMazeRight
 
 __all__ = [
     "CollectHealth",
@@ -39,6 +40,9 @@ __all__ = [
     "YMaze",
     "YMazeLeft",
     "YMazeRight",
+    "StarMaze",
+    "StarMazeLeft",
+    "StarMazeRight",
 ]
 
 gym.register(
@@ -154,4 +158,19 @@ gym.register(
 gym.register(
     id="MiniWorld-YMazeRight-v0",
     entry_point="miniworld.envs.ymaze:YMazeRight",
+)
+
+gym.register(
+    id="MiniWorld-StarMaze-v0",
+    entry_point="miniworld.envs.starmaze:StarMaze",
+)
+
+gym.register(
+    id="MiniWorld-StarMazeLeft-v0",
+    entry_point="miniworld.envs.starmaze:StarMazeLeft",
+)
+
+gym.register(
+    id="MiniWorld-StarMazeRight-v0",
+    entry_point="miniworld.envs.starmaze:StarMazeRight",
 )
