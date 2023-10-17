@@ -2,6 +2,11 @@
     <img src="https://raw.githubusercontent.com/Farama-Foundation/Miniworld/master/miniworld-text.png" width="500px"/>
 </p>
 
+------------
+[This is a fork of the [original](https://github.com/Farama-Foundation/Miniworld)! This is only for my personal experiments with the Miniworld environments.]
+
+------------
+
 Miniworld is being maintained by the Farama Foundation (https://farama.org/project_standards). See the [Project Roadmap](https://github.com/Farama-Foundation/Miniworld/issues/103) for details regarding the long-term plans.
 
 [![Build Status](https://travis-ci.org/maximecb/gym-miniworld.svg?branch=master)](https://travis-ci.org/maximecb/gym-miniworld)
