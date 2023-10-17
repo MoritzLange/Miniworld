@@ -107,7 +107,7 @@ class StarMaze(MiniWorldEnv, utils.EzPickle):
         # Add a box at a random end of the hallway
         self.box = Box(color="red")
 
-        # Place the goal in the left or the right arm
+        # Place the goal
         if self.goal_pos is not None:
             self.place_entity(
                 self.box,
@@ -130,20 +130,23 @@ class StarMaze(MiniWorldEnv, utils.EzPickle):
     def step(self, action):
         obs, reward, termination, truncation, info = super().step(action)
 
-        if self.near(self.box):
-            reward += self._reward()
-            termination = False
+        if self.goal_pos is not None:
+            if self.near(self.box):
+                reward += self._reward()
+                termination = False
 
-        info["goal_pos"] = self.box.pos
+            info["goal_pos"] = self.box.pos
+        else:
+            info["goal_pos"] = None
 
         return obs, reward, termination, truncation, info
 
 
-class StarMazeLeft(StarMaze):
+class StarMazeMid(StarMaze):
     def __init__(self, goal_pos=[0.5, 0, 0.5], **kwargs):
         super().__init__(goal_pos=goal_pos, **kwargs)
 
 
-class StarMazeRight(StarMaze):
-    def __init__(self, goal_pos=[5.5, 0, 2], **kwargs):
+class StarMazeArm(StarMaze):
+    def __init__(self, goal_pos=[5.5, 0, 1.9], **kwargs):
         super().__init__(goal_pos=goal_pos, **kwargs)
