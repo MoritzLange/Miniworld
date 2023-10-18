@@ -1130,6 +1130,11 @@ class MiniWorldEnv(gym.Env):
             min_x -= w_diff / 2
             max_x += w_diff / 2
 
+        self.render_min_x = min_x
+        self.render_max_x = max_x
+        self.render_min_z = min_z
+        self.render_max_z = max_z
+
         # Set the projection matrix
         glMatrixMode(GL_PROJECTION)
         glLoadIdentity()
