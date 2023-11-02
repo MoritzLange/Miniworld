@@ -43,6 +43,7 @@ __all__ = [
     "StarMaze",
     "StarMazeMid",
     "StarMazeArm",
+    "StarMazeRandom",
 ]
 
 gym.register(
@@ -173,4 +174,9 @@ gym.register(
 gym.register(
     id="MiniWorld-StarMazeArm-v0",
     entry_point="miniworld.envs.starmaze:StarMazeArm",
+)
+
+gym.register(
+    id="MiniWorld-StarMazeRandom-v0",
+    entry_point="miniworld.envs.starmaze:StarMazeRandom",
 )
