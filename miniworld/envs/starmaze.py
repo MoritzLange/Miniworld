@@ -45,11 +45,13 @@ class StarMaze(MiniWorldEnv, utils.EzPickle):
 
     """
 
-    def __init__(self, goal_pos=None, **kwargs):
-        self.goal_pos = goal_pos
+    def __init__(self, goal_pos=None, max_episode_steps=1500, **kwargs):
 
+        self.goal_pos = goal_pos
+        
         MiniWorldEnv.__init__(self, max_episode_steps=280, **kwargs)
         utils.EzPickle.__init__(self, goal_pos, **kwargs)
+        self.max_episode_steps = max_episode_steps
 
         # Allow only movement actions (left/right/forward)
         self.action_space = spaces.Discrete(self.actions.move_forward + 1)
@@ -133,7 +135,7 @@ class StarMaze(MiniWorldEnv, utils.EzPickle):
         if self.goal_pos is not None:
             if self.near(self.box):
                 reward += self._reward()
-                termination = False
+                termination = True
 
             info["goal_pos"] = self.box.pos
         else:
