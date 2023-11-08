@@ -38,9 +38,12 @@ class WallGap(MiniWorldEnv, utils.EzPickle):
     ```
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, use_goal=True, **kwargs):
+        
+        self.use_goal = use_goal
+
         MiniWorldEnv.__init__(self, max_episode_steps=300, **kwargs)
-        utils.EzPickle.__init__(self, **kwargs)
+        utils.EzPickle.__init__(self, use_goal, **kwargs)
 
         # Allow only the movement actions
         self.action_space = spaces.Discrete(self.actions.move_forward + 1)
@@ -68,7 +71,8 @@ class WallGap(MiniWorldEnv, utils.EzPickle):
         )
         self.connect_rooms(room0, room1, min_x=-1.5, max_x=1.5)
 
-        self.box = self.place_entity(Box(color="red"), room=room1)
+        if self.use_goal:
+            self.box = self.place_entity(Box(color="red"), room=room1)
 
         # Decorative building in the background
         self.place_entity(
@@ -82,8 +86,13 @@ class WallGap(MiniWorldEnv, utils.EzPickle):
     def step(self, action):
         obs, reward, termination, truncation, info = super().step(action)
 
-        if self.near(self.box):
+        if self.use_goal and self.near(self.box):
             reward += self._reward()
             termination = True
 
         return obs, reward, termination, truncation, info
+
+class WallGapEmpty(WallGap):
+    # WallGap environment without the goal object
+    def __init__(self, **kwargs):
+        super().__init__(use_goal=False, **kwargs)

@@ -12,7 +12,7 @@ from miniworld.envs.sidewalk import Sidewalk
 from miniworld.envs.sign import Sign
 from miniworld.envs.threerooms import ThreeRooms
 from miniworld.envs.tmaze import TMaze, TMazeLeft, TMazeRight
-from miniworld.envs.wallgap import WallGap
+from miniworld.envs.wallgap import WallGap, WallGapEmpty
 from miniworld.envs.ymaze import YMaze, YMazeLeft, YMazeRight
 from miniworld.envs.starmaze import StarMaze, StarMazeMid, StarMazeArm
 
@@ -37,6 +37,7 @@ __all__ = [
     "TMazeLeft",
     "TMazeRight",
     "WallGap",
+    "WallGapEmpty",
     "YMaze",
     "YMazeLeft",
     "YMazeRight",
@@ -144,6 +145,11 @@ gym.register(
 gym.register(
     id="MiniWorld-WallGap-v0",
     entry_point="miniworld.envs.wallgap:WallGap",
+)
+
+gym.register(
+    id="MiniWorld-WallGapEmpty-v0",
+    entry_point="miniworld.envs.wallgap:WallGapEmpty",
 )
 
 gym.register(
