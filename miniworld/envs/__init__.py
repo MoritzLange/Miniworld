@@ -1,7 +1,7 @@
 import gymnasium as gym
 
 from miniworld.envs.collecthealth import CollectHealth
-from miniworld.envs.fourcoloredrooms import FourColoredRooms
+from miniworld.envs.fourcoloredrooms import FourColoredRooms, FourColoredRoomsEmpty
 from miniworld.envs.fourrooms import FourRooms
 from miniworld.envs.hallway import Hallway
 from miniworld.envs.maze import Maze, MazeS2, MazeS3, MazeS3Fast
@@ -20,6 +20,7 @@ from miniworld.envs.starmaze import StarMaze, StarMazeMid, StarMazeArm
 __all__ = [
     "CollectHealth",
     "FourColoredRooms",
+    "FourColoredRoomsEmpty",
     "FourRooms",
     "Hallway",
     "Maze",
@@ -57,6 +58,11 @@ gym.register(
 gym.register(
     id="MiniWorld-FourColoredRooms-v0",
     entry_point="miniworld.envs.fourcoloredrooms:FourColoredRooms",
+)
+
+gym.register(
+    id="MiniWorld-FourColoredRoomsEmpty-v0",
+    entry_point="miniworld.envs.fourcoloredrooms:FourColoredRoomsEmpty",
 )
 
 gym.register(

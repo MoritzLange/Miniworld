@@ -36,9 +36,12 @@ class FourColoredRooms(MiniWorldEnv, utils.EzPickle):
 
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, use_goal=True, **kwargs):
+
+        self.use_goal = use_goal
+
         MiniWorldEnv.__init__(self, max_episode_steps=250, **kwargs)
-        utils.EzPickle.__init__(self, **kwargs)
+        utils.EzPickle.__init__(self, use_goal, **kwargs)
 
         # Allow only the movement actions
         self.action_space = spaces.Discrete(self.actions.move_forward + 1)
@@ -59,15 +62,21 @@ class FourColoredRooms(MiniWorldEnv, utils.EzPickle):
         self.connect_rooms(room2, room3, min_z=-5, max_z=-3, max_y=2.2)
         self.connect_rooms(room3, room0, min_x=-5, max_x=-3, max_y=2.2)
 
-        self.box = self.place_entity(Box(color="red"))
+        if self.use_goal:
+            self.box = self.place_entity(Box(color="red"))
 
         self.place_agent()
 
     def step(self, action):
         obs, reward, termination, truncation, info = super().step(action)
 
-        if self.near(self.box):
+        if self.use_goal and self.near(self.box):
             reward += self._reward()
             termination = True
 
         return obs, reward, termination, truncation, info
+    
+class FourColoredRoomsEmpty(FourColoredRooms):
+    # WallGap environment without the goal object
+    def __init__(self, **kwargs):
+        super().__init__(use_goal=False, **kwargs)
