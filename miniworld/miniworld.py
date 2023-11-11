@@ -145,7 +145,7 @@ class Room:
         # Number of outline vertices / walls
         self.num_walls = outline.shape[0]
 
-        if (len(wall_texs) != self.num_walls) and (len(wall_texs) != 0):
+        if (len(wall_texs) != self.num_walls) and (len(wall_texs) > 1):
             raise AssertionError("The length of list wall_texs must match the number of walls!")
 
         # List of 2D points forming the outline of the room
