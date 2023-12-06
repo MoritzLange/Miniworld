@@ -45,12 +45,12 @@ class StarMaze(MiniWorldEnv, utils.EzPickle):
 
     """
 
-    def __init__(self, goal_pos=None, max_episode_steps=1500, **kwargs):
+    def __init__(self, goal_pos=None, max_ep_steps = 1500, **kwargs):
 
         self.goal_pos = goal_pos
         
-        MiniWorldEnv.__init__(self, max_episode_steps=max_episode_steps, **kwargs)
-        utils.EzPickle.__init__(self, goal_pos, max_episode_steps, **kwargs)
+        MiniWorldEnv.__init__(self, max_episode_steps=max_ep_steps, **kwargs)
+        utils.EzPickle.__init__(self, goal_pos, **kwargs)
 
         # Allow only movement actions (left/right/forward)
         self.action_space = spaces.Discrete(self.actions.move_forward + 1)
@@ -147,14 +147,14 @@ class StarMaze(MiniWorldEnv, utils.EzPickle):
 
 
 class StarMazeMid(StarMaze):
-    def __init__(self, goal_pos=[0.5, 0, 0.5], max_episode_steps=1500, **kwargs):
-        super().__init__(goal_pos=goal_pos, max_episode_steps=max_episode_steps, **kwargs)
+    def __init__(self, goal_pos=[0.5, 0, 0.5], max_ep_steps=1500, **kwargs):
+        super().__init__(goal_pos=goal_pos, max_ep_steps=max_ep_steps, **kwargs)
 
 
 class StarMazeArm(StarMaze):
-    def __init__(self, goal_pos=[5.5, 0, 1.9], max_episode_steps=1500, **kwargs):
-        super().__init__(goal_pos=goal_pos, max_episode_steps=max_episode_steps, **kwargs)
+    def __init__(self, goal_pos=[5.5, 0, 1.9], max_ep_steps = 1500, **kwargs):
+        super().__init__(goal_pos=goal_pos, max_ep_steps=max_ep_steps, **kwargs)
 
 class StarMazeRandom(StarMaze):
-    def __init__(self, goal_pos="random", max_episode_steps=1500, **kwargs):
-        super().__init__(goal_pos=goal_pos, max_episode_steps=max_episode_steps, **kwargs)
+    def __init__(self, goal_pos="random", max_ep_steps=1500, **kwargs):
+        super().__init__(goal_pos=goal_pos, max_ep_steps=max_ep_steps, **kwargs)
